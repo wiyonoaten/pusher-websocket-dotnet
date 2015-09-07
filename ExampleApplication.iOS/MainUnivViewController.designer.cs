@@ -25,7 +25,7 @@ namespace ExampleApplication.iOS
 		UIKit.UITextField EditName { get; set; }
 
 		[Outlet]
-		UIKit.UITextView LabelMessages { get; set; }
+		UIKit.UITextView LabelConsole { get; set; }
 
 		[Outlet]
 		UIKit.UIStackView LayoutConnectDisconnect { get; set; }
@@ -65,9 +65,9 @@ namespace ExampleApplication.iOS
 				EditName = null;
 			}
 
-			if (LabelMessages != null) {
-				LabelMessages.Dispose ();
-				LabelMessages = null;
+			if (LabelConsole != null) {
+				LabelConsole.Dispose ();
+				LabelConsole = null;
 			}
 		}
 	}
