@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>PusherClient</id>
+    <id>PusherClient-LocalMod</id>
     <version>0.2.0</version>
     <title>Pusher .NET Client Library</title>
-    <authors>Pusher, Phil Leggetter</authors>
+    <authors>Pusher, Phil Leggetter, Wiyono Aten</authors>
     <owners>Pusher</owners>
     <licenseUrl>https://github.com/pusher/pusher-dotnet-client/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/pusher/pusher-dotnet-client</projectUrl>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout
+        android:id="@+id/LayoutConnectDisconnect"
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/EditName"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/ButtonStart"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/HintEnterName" />
+        <Button
+            android:id="@+id/ButtonStart"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ButtonConnect" />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/LayoutChatView"
+        android:layout_below="@+id/LayoutConnectDisconnect"
+        android:layout_above="@+id/LayoutSendMessage"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/TextConsole"
+            android:background="@android:color/background_dark"
+            android:textColor="@android:color/background_light"
+            android:singleLine="false"
+            android:scrollbars="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/LayoutSendMessage"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/EditMessage"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/ButtonSend"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/FormatHintEnterMessage" />
+        <Button
+            android:id="@+id/ButtonSend"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ButtonSend" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ApplicationName">PusherClient.ExampleApp</string>
+    <string name="HintEnterName">Enter your name and hit Start!</string>
+    <string name="ButtonConnect">Connect :)</string>
+    <string name="ButtonDisconnect">Disconnect :(</string>
+    <string name="FormatHintEnterMessage">Hi %s! Type anything to chat and hit Send!</string>
+    <string name="ButtonSend">Send!</string>
+    <string name="AlertNotConnected">You are not (or no longer) connected!</string>
+    <string name="ToastDisconnected">Disconnected! Please start over again.</string>
+</resources>
