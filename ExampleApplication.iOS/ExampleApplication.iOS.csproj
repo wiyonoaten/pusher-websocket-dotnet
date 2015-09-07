@@ -111,14 +111,33 @@
     <BundleResource Include="Resources\MainUnivViewController_iPhone.storyboard.sb-07ade421-oo93xv" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="ToastIOS">
+      <HintPath>..\Components\ToastIOS-1.05\lib\ios-unified\ToastIOS.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
   </ItemGroup>
-  <Import Project="..\PusherClient.Shared\PusherClient.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\PusherClient.iOS\PusherClient.iOS.csproj">
+      <Project>{7c53bbcf-0ee2-464a-85f1-646761db12f7}</Project>
+      <Name>PusherClient.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="ToastIOS">
+      <Visible>False</Visible>
+      <Version>1.5</Version>
+      <InstallationInProgress>True</InstallationInProgress>
+    </XamarinComponentReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
