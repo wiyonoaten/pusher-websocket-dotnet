@@ -73,9 +73,9 @@
                         <outlet property="ButtonStart" destination="4Om-eV-iZx" id="FMO-ks-zie"/>
                         <outlet property="EditMessage" destination="Day-m5-SAR" id="OdP-Kb-ZRp"/>
                         <outlet property="EditName" destination="Mzt-FI-2XS" id="Oye-ha-XBP"/>
-                        <outlet property="LabelConsole" destination="Iki-Qc-2iZ" id="lxy-Ih-xnW"/>
                         <outlet property="LayoutConnectDisconnect" destination="vGQ-76-tyU" id="wfZ-9s-Yqv"/>
                         <outlet property="LayoutSendMessage" destination="y0G-hE-0u4" id="239-WL-9uo"/>
+                        <outlet property="TextConsole" destination="Iki-Qc-2iZ" id="hNR-ta-2ar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

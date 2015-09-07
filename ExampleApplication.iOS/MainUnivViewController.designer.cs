@@ -25,13 +25,13 @@ namespace ExampleApplication.iOS
 		UIKit.UITextField EditName { get; set; }
 
 		[Outlet]
-		UIKit.UITextView LabelConsole { get; set; }
-
-		[Outlet]
 		UIKit.UIStackView LayoutConnectDisconnect { get; set; }
 
 		[Outlet]
 		UIKit.UIStackView LayoutSendMessage { get; set; }
+
+		[Outlet]
+		UIKit.UITextView TextConsole { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -65,9 +65,9 @@ namespace ExampleApplication.iOS
 				EditName = null;
 			}
 
-			if (LabelConsole != null) {
-				LabelConsole.Dispose ();
-				LabelConsole = null;
+			if (TextConsole != null) {
+				TextConsole.Dispose ();
+				TextConsole = null;
 			}
 		}
 	}
