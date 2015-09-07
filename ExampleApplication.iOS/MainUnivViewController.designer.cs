@@ -26,12 +26,23 @@ namespace ExampleApplication.iOS
 
 		[Outlet]
 		UIKit.UITextView LabelMessages { get; set; }
+
+		[Outlet]
+		UIKit.UIStackView LayoutConnectDisconnect { get; set; }
+
+		[Outlet]
+		UIKit.UIStackView LayoutSendMessage { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (EditName != null) {
-				EditName.Dispose ();
-				EditName = null;
+			if (LayoutConnectDisconnect != null) {
+				LayoutConnectDisconnect.Dispose ();
+				LayoutConnectDisconnect = null;
+			}
+
+			if (ButtonSend != null) {
+				ButtonSend.Dispose ();
+				ButtonSend = null;
 			}
 
 			if (ButtonStart != null) {
@@ -39,19 +50,24 @@ namespace ExampleApplication.iOS
 				ButtonStart = null;
 			}
 
-			if (LabelMessages != null) {
-				LabelMessages.Dispose ();
-				LabelMessages = null;
-			}
-
 			if (EditMessage != null) {
 				EditMessage.Dispose ();
 				EditMessage = null;
 			}
 
-			if (ButtonSend != null) {
-				ButtonSend.Dispose ();
-				ButtonSend = null;
+			if (LayoutSendMessage != null) {
+				LayoutSendMessage.Dispose ();
+				LayoutSendMessage = null;
+			}
+
+			if (EditName != null) {
+				EditName.Dispose ();
+				EditName = null;
+			}
+
+			if (LabelMessages != null) {
+				LabelMessages.Dispose ();
+				LabelMessages = null;
 			}
 		}
 	}

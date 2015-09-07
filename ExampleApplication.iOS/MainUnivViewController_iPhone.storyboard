@@ -74,6 +74,8 @@
                         <outlet property="EditMessage" destination="Day-m5-SAR" id="OdP-Kb-ZRp"/>
                         <outlet property="EditName" destination="Mzt-FI-2XS" id="Oye-ha-XBP"/>
                         <outlet property="LabelMessages" destination="Iki-Qc-2iZ" id="fOb-zH-VJ5"/>
+                        <outlet property="LayoutConnectDisconnect" destination="vGQ-76-tyU" id="wfZ-9s-Yqv"/>
+                        <outlet property="LayoutSendMessage" destination="y0G-hE-0u4" id="239-WL-9uo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
