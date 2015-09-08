@@ -82,7 +82,7 @@ namespace ExampleApplication.Android
                     _buttonStart.Text = GetString(Resource.String.ButtonConnect);
                     _editMessage.Hint = "";
 
-                    _pusher.Disconnect();
+                    UninitPusher();
                 }
             };
 
@@ -142,6 +142,12 @@ namespace ExampleApplication.Android
             _pusher.Connect();
         }
 
+        private void UninitPusher()
+        {
+            _pusher.Connected -= pusher_Connected;
+            _pusher.Disconnect();
+        }
+
         private void _pusher_ConnectionStateChanged(object sender, ConnectionState state)
         {
             ConsoleWriteLine("Connection state: " + state.ToString());
@@ -150,6 +156,8 @@ namespace ExampleApplication.Android
 			{
 				RunOnUiThread(() =>
                 {
+                    _pusher.ConnectionStateChanged -= _pusher_ConnectionStateChanged;
+
                     Toast.MakeText(this, GetString(Resource.String.ToastDisconnected), ToastLength.Short).Show();
 
                     SetViewAndChildrenEnabled(_layoutConnectDisconnect, true);

@@ -77,7 +77,7 @@ namespace ExampleApplication.iOS
                     this.ButtonStart.SetTitle("Connect :)", UIControlState.Normal);
                     this.EditMessage.Placeholder = "";
 
-                    _pusher.Disconnect();
+                    UninitPusher();
                 }
             };
 
@@ -96,15 +96,6 @@ namespace ExampleApplication.iOS
                     this.EditMessage.Text = "";
                 }
             };
-
-            //this.LabelConsole.LayoutChange += (sender, args) =>
-            //{
-            //    if (args.Bottom - args.Top != args.OldBottom - args.OldTop)
-            //    {
-            //        ConsoleResetScroll();
-            //        ConsoleScrollToBottomIfRequired();
-            //    }
-            //};
         }
 
         public override void ViewWillAppear(bool animated)
@@ -135,10 +126,6 @@ namespace ExampleApplication.iOS
             {
                 (view as UIControl).Enabled = enabled;
             }
-            else
-            {
-                view.UserInteractionEnabled = enabled;
-            }
             for (int i = 0; i < view.Subviews.Length; i++)
             {
                 UIView child = view.Subviews[i];
@@ -159,6 +146,12 @@ namespace ExampleApplication.iOS
             _pusher.Connect();
         }
 
+        private void UninitPusher()
+        {
+            _pusher.Connected -= pusher_Connected;
+            _pusher.Disconnect();
+        }
+
         private void _pusher_ConnectionStateChanged(object sender, ConnectionState state)
         {
             ConsoleWriteLine("Connection state: " + state.ToString());
@@ -167,6 +160,8 @@ namespace ExampleApplication.iOS
             {
                 InvokeOnMainThread(() =>
                 {
+                    _pusher.ConnectionStateChanged -= _pusher_ConnectionStateChanged;
+
                     Toast.MakeText("Disconnected! Please start over again.", Toast.LENGTH_SHORT).Show();
 
                     SetViewAndChildrenEnabled(this.LayoutConnectDisconnect, true);
@@ -248,9 +243,6 @@ namespace ExampleApplication.iOS
 
         private void ConsoleResetScroll()
         {
-            //this.TextConsole.ScrollRectToVisible(new CoreGraphics.CGRect(
-            //    0.0, 0.0, this.TextConsole.Frame.Width, this.TextConsole.Frame.Height), 
-            //    false);
             this.TextConsole.ScrollRangeToVisible(new NSRange(0, 1));
         }
 
