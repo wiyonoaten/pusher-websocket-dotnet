@@ -93,7 +93,7 @@ namespace PusherClient
             var dataAsObj = JsonConvert.DeserializeObject<dynamic>(data);
 
 #if (__IOS__)
-            var id = (string)dataAsObj;
+            var id = (string)dataAsObj["user_id"];
             var val = (dynamic)dataAsObj["user_info"];
 #else
             var id = (string)dataAsObj.user_id;
