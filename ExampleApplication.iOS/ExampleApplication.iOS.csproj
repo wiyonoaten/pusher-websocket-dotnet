@@ -46,9 +46,15 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: wiyono.aten@gmail.com (9SFZNXM349)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <StartupObject>ExampleApplication.iOS.Application</StartupObject>
+    <CodesignProvision>dd16e9df-c398-4f55-bcc0-23b7b4b9da6e</CodesignProvision>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -126,17 +132,17 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PusherClient.iOS\PusherClient.iOS.csproj">
-      <Project>{7c53bbcf-0ee2-464a-85f1-646761db12f7}</Project>
+      <Project>{7C53BBCF-0EE2-464A-85F1-646761DB12F7}</Project>
       <Name>PusherClient.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
+      <IsAppExtension>False</IsAppExtension>
+      <IsWatchApp>False</IsWatchApp>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="ToastIOS">
-      <Visible>False</Visible>
-      <Version>1.5</Version>
       <InstallationInProgress>True</InstallationInProgress>
+      <Version>1.5</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

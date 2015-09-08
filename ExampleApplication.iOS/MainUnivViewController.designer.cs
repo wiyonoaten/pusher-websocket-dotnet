@@ -25,10 +25,10 @@ namespace ExampleApplication.iOS
 		UIKit.UITextField EditName { get; set; }
 
 		[Outlet]
-		UIKit.UIStackView LayoutConnectDisconnect { get; set; }
+		UIKit.UIView LayoutConnectDisconnect { get; set; }
 
 		[Outlet]
-		UIKit.UIStackView LayoutSendMessage { get; set; }
+		UIKit.UIView LayoutSendMessage { get; set; }
 
 		[Outlet]
 		UIKit.UITextView TextConsole { get; set; }

@@ -4,17 +4,27 @@
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>PusherClient.ExampleApp</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Default-568h@2x.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.wiyonoaten.pusherclient.ios.exampleapp</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>MinimumOSVersion</key>
+	<string>8.3</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
+	<key>UIMainStoryboardFile</key>
+	<string>MainUnivViewController_iPhone</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>MainUnivViewController_iPhone</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -28,13 +38,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>MinimumOSVersion</key>
-	<string>9.0</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Default-568h@2x.png</string>
-	</array>
-	<key>UIMainStoryboardFile~ipad</key>
-	<string>MainUnivViewController_iPad</string>
 </dict>
 </plist>
