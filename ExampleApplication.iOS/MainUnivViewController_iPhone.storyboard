@@ -18,9 +18,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mz-oh-9p1">
-                                <rect key="frame" x="16" y="20" width="288" height="30"/>
+                                <rect key="frame" x="16" y="30" width="288" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Om-eV-iZx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Om-eV-iZx" misplaced="YES">
                                         <rect key="frame" x="195" y="0.0" width="93" height="30"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         <state key="normal" title="Connect :)"/>
@@ -45,7 +45,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yle-n7-DAZ">
-                                <rect key="frame" x="16" y="518" width="288" height="30"/>
+                                <rect key="frame" x="16" y="440" width="288" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiR-9w-xKH">
                                         <rect key="frame" x="228" y="0.0" width="60" height="30"/>
@@ -72,25 +72,28 @@
                                     <constraint id="15" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iki-Qc-2iZ" dataDetectorTypes2="YES">
-                                <rect key="frame" x="16" y="84" width="288" height="400"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iki-Qc-2iZ" dataDetectorTypes2="YES">
+                                <rect key="frame" x="16" y="68" width="288" height="364"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <constraints>
+                                    <constraint id="34" firstAttribute="width" constant="288"/>
+                                    <constraint id="35" firstAttribute="height" constant="364"/>
+                                </constraints>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Iki-Qc-2iZ" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="KkA-Uh-RQI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Iki-Qc-2iZ" secondAttribute="trailing" constant="-4" id="gbH-Jk-uDM"/>
-                            <constraint firstItem="Iki-Qc-2iZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="klz-fC-04y"/>
-                            <constraint id="9" constant="16" firstItem="kh9-bI-dsS" firstAttribute="trailing" secondItem="6mz-oh-9p1" secondAttribute="trailing"/>
-                            <constraint id="10" constant="20" firstItem="6mz-oh-9p1" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top"/>
-                            <constraint id="12" constant="16" firstItem="kh9-bI-dsS" firstAttribute="trailing" secondItem="yle-n7-DAZ" secondAttribute="trailing"/>
-                            <constraint id="13" constant="-68" firstItem="kh9-bI-dsS" firstAttribute="bottom" secondItem="yle-n7-DAZ" secondAttribute="bottom"/>
+                            <constraint id="28" constant="16" firstItem="kh9-bI-dsS" firstAttribute="trailing" secondItem="6mz-oh-9p1" secondAttribute="trailing"/>
+                            <constraint id="29" constant="30" firstItem="6mz-oh-9p1" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top"/>
+                            <constraint id="30" constant="16" firstItem="kh9-bI-dsS" firstAttribute="trailing" secondItem="yle-n7-DAZ" secondAttribute="trailing"/>
+                            <constraint id="31" constant="10" firstItem="kh9-bI-dsS" firstAttribute="bottom" secondItem="yle-n7-DAZ" secondAttribute="bottom"/>
+                            <constraint id="32" firstItem="kh9-bI-dsS" firstAttribute="bottom" secondItem="Iki-Qc-2iZ" secondAttribute="bottom" constant="48"/>
+                            <constraint id="33" constant="16" firstItem="kh9-bI-dsS" firstAttribute="trailing" secondItem="Iki-Qc-2iZ" secondAttribute="trailing"/>
                         </constraints>
                     </view>
                     <connections>
@@ -111,4 +114,7 @@
     <resources>
         <image name="Default-568h.png" width="640" height="1136"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>
