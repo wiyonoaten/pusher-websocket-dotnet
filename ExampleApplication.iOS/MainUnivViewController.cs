@@ -1,4 +1,5 @@
 using Foundation;
+using Newtonsoft.Json.Linq;
 using PusherClient;
 using System;
 using System.Collections.Generic;
@@ -226,9 +227,9 @@ namespace ExampleApplication.iOS
                 this.EditMessage.Placeholder = string.Format("Hi {0}! Type anything to chat and hit Send!", _name);
             });
 
-            _chatChannel.Bind("client-my-event", (dynamic data) =>
+            _chatChannel.Bind("client-my-event", (JObject data) =>
             {
-                ConsoleWriteLine("[" + data.name + "] " + data.message);
+                ConsoleWriteLine("[" + data["name"] + "] " + data["message"]);
             });
         }
 
@@ -267,7 +268,7 @@ namespace ExampleApplication.iOS
 
             foreach (var mem in _presenceChannel.Members)
             {
-                names.Add((string)mem.Value.name.Value);
+                names.Add((string)mem.Value["name"]["Value"]);
             }
 
             ConsoleWriteLine("[MEMBERS] " + names.Aggregate((i, j) => i + ", " + j));

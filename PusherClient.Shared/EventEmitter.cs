@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace PusherClient
 {
+#if (__IOS__)
+    using dynamic = JObject;
+#endif
+
     public class EventEmitter
     {
         private Dictionary<string, List<Action<dynamic>>> _eventListeners = new Dictionary<string, List<Action<dynamic>>>();

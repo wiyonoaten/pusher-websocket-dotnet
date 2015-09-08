@@ -109,6 +109,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <InterfaceDefinition Include="MainUnivViewController_iPhone.storyboard" />
     <InterfaceDefinition Include="MainUnivViewController_iPad.storyboard" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -117,7 +118,10 @@
     <BundleResource Include="Resources\MainUnivViewController_iPhone.storyboard.sb-07ade421-oo93xv" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />

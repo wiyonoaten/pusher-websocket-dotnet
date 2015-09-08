@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace PusherClient
 {
+#if (__IOS__)
+    using dynamic = JObject;
+#endif
+
     public delegate void MemberEventHandler(object sender);
 
     public class PresenceChannel : PrivateChannel
@@ -61,11 +66,22 @@ namespace PusherClient
             Dictionary<string, dynamic> members = new Dictionary<string, dynamic>();
 
             var dataAsObj = JsonConvert.DeserializeObject<dynamic>(data);
-            
-            for (int i = 0; i < (int)dataAsObj.presence.count; i++)
+
+#if (__IOS__)
+            var memberCount = (int)dataAsObj["presence"]["count"];
+#else
+            var memberCount = (int)dataAsObj.presence.count;
+#endif
+
+            for (int i = 0; i < memberCount; i++)
             {
+#if (__IOS__)
+                var id = (string)dataAsObj["presence"]["ids"][i];
+                var val = (dynamic)dataAsObj["presence"]["hash"][id];
+#else
                 var id = (string)dataAsObj.presence.ids[i];
                 var val = (dynamic)dataAsObj.presence.hash[id];
+#endif
                 members.Add(id, val);
             }
 
@@ -76,13 +92,18 @@ namespace PusherClient
         {
             var dataAsObj = JsonConvert.DeserializeObject<dynamic>(data);
 
+#if (__IOS__)
+            var id = (string)dataAsObj;
+            var val = (dynamic)dataAsObj["user_info"];
+#else
             var id = (string)dataAsObj.user_id;
             var val = (dynamic)dataAsObj.user_info;
+#endif
 
             return new KeyValuePair<string, dynamic>(id, val);
         }
 
-        #endregion
+#endregion
 
     }
 }
