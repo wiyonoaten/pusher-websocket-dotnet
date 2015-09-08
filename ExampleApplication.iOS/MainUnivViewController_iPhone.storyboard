@@ -68,8 +68,8 @@
                                     <constraint firstItem="Day-m5-SAR" firstAttribute="leading" secondItem="yle-n7-DAZ" secondAttribute="leading" id="zIg-Yg-oFn"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iki-Qc-2iZ">
-                                <rect key="frame" x="16" y="58" width="288" height="452"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iki-Qc-2iZ">
+                                <rect key="frame" x="16" y="84" width="288" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -86,10 +86,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6mz-oh-9p1" secondAttribute="trailing" constant="-4" id="JZH-ex-t6k"/>
                             <constraint firstItem="Iki-Qc-2iZ" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="KkA-Uh-RQI"/>
                             <constraint firstItem="6mz-oh-9p1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="O1N-yp-fgq"/>
-                            <constraint firstItem="Iki-Qc-2iZ" firstAttribute="top" secondItem="6mz-oh-9p1" secondAttribute="bottom" constant="8" symbolic="YES" id="Usl-lk-ZF4"/>
                             <constraint firstItem="yle-n7-DAZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="VxN-2y-DMF"/>
                             <constraint firstItem="AWi-qB-Trx" firstAttribute="top" secondItem="yle-n7-DAZ" secondAttribute="bottom" constant="20" id="YJI-sR-sTm"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Iki-Qc-2iZ" secondAttribute="trailing" id="gbH-Jk-uDM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Iki-Qc-2iZ" secondAttribute="trailing" constant="-4" id="gbH-Jk-uDM"/>
                             <constraint firstItem="Iki-Qc-2iZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="klz-fC-04y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yle-n7-DAZ" secondAttribute="trailing" constant="-4" id="lgy-uj-aId"/>
                         </constraints>
