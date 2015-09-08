@@ -13,8 +13,14 @@ namespace ExampleApplication.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
+        public override UIWindow Window
+        {
+            get;
+            set;
+        }
+
         // class-level declarations
-        UIWindow window;
+        //UIWindow window;
 
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
