@@ -1,11 +1,13 @@
 // WARNING
 //
-// This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the UI designer. If it is removed, they will be lost.
-// Manual changes to this file may not be handled correctly.
+// This file has been generated automatically by Xamarin Studio from the outlets and
+// actions declared in your storyboard file.
+// Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace ExampleApplication.iOS
 {
@@ -32,43 +34,9 @@ namespace ExampleApplication.iOS
 
 		[Outlet]
 		UIKit.UITextView TextConsole { get; set; }
-		
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (LayoutConnectDisconnect != null) {
-				LayoutConnectDisconnect.Dispose ();
-				LayoutConnectDisconnect = null;
-			}
-
-			if (ButtonSend != null) {
-				ButtonSend.Dispose ();
-				ButtonSend = null;
-			}
-
-			if (ButtonStart != null) {
-				ButtonStart.Dispose ();
-				ButtonStart = null;
-			}
-
-			if (EditMessage != null) {
-				EditMessage.Dispose ();
-				EditMessage = null;
-			}
-
-			if (LayoutSendMessage != null) {
-				LayoutSendMessage.Dispose ();
-				LayoutSendMessage = null;
-			}
-
-			if (EditName != null) {
-				EditName.Dispose ();
-				EditName = null;
-			}
-
-			if (TextConsole != null) {
-				TextConsole.Dispose ();
-				TextConsole = null;
-			}
 		}
 	}
 }

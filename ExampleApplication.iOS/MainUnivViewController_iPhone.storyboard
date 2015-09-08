@@ -14,10 +14,10 @@
                         <viewControllerLayoutGuide type="bottom" id="AWi-qB-Trx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6mz-oh-9p1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mz-oh-9p1">
                                 <rect key="frame" x="16" y="20" width="288" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Om-eV-iZx">
@@ -40,9 +40,11 @@
                                     <constraint firstItem="4Om-eV-iZx" firstAttribute="leading" secondItem="Mzt-FI-2XS" secondAttribute="trailing" constant="8" symbolic="YES" id="SP4-68-1a1"/>
                                     <constraint firstItem="Mzt-FI-2XS" firstAttribute="leading" secondItem="6mz-oh-9p1" secondAttribute="leading" id="mAD-st-XOj"/>
                                     <constraint firstItem="Mzt-FI-2XS" firstAttribute="top" secondItem="6mz-oh-9p1" secondAttribute="top" id="voS-Wt-LQm"/>
+                                    <constraint id="8" firstAttribute="height" constant="30"/>
+                                    <constraint id="11" firstAttribute="width" constant="288"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yle-n7-DAZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yle-n7-DAZ">
                                 <rect key="frame" x="16" y="518" width="288" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiR-9w-xKH">
@@ -66,13 +68,14 @@
                                     <constraint firstItem="BiR-9w-xKH" firstAttribute="leading" secondItem="Day-m5-SAR" secondAttribute="trailing" constant="8" symbolic="YES" id="jKu-IU-0xG"/>
                                     <constraint firstItem="Day-m5-SAR" firstAttribute="top" secondItem="yle-n7-DAZ" secondAttribute="top" id="wLe-qc-7vy"/>
                                     <constraint firstItem="Day-m5-SAR" firstAttribute="leading" secondItem="yle-n7-DAZ" secondAttribute="leading" id="zIg-Yg-oFn"/>
+                                    <constraint id="14" firstAttribute="width" constant="288"/>
+                                    <constraint id="15" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iki-Qc-2iZ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iki-Qc-2iZ" dataDetectorTypes2="YES">
                                 <rect key="frame" x="16" y="84" width="288" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -81,16 +84,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AWi-qB-Trx" firstAttribute="top" secondItem="6mz-oh-9p1" secondAttribute="bottom" constant="518" id="00A-1a-anL"/>
-                            <constraint firstItem="6mz-oh-9p1" firstAttribute="top" secondItem="tKb-rY-cAq" secondAttribute="bottom" id="4LU-VP-DZN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6mz-oh-9p1" secondAttribute="trailing" constant="-4" id="JZH-ex-t6k"/>
                             <constraint firstItem="Iki-Qc-2iZ" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="KkA-Uh-RQI"/>
-                            <constraint firstItem="6mz-oh-9p1" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="O1N-yp-fgq"/>
-                            <constraint firstItem="yle-n7-DAZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="VxN-2y-DMF"/>
-                            <constraint firstItem="AWi-qB-Trx" firstAttribute="top" secondItem="yle-n7-DAZ" secondAttribute="bottom" constant="20" id="YJI-sR-sTm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Iki-Qc-2iZ" secondAttribute="trailing" constant="-4" id="gbH-Jk-uDM"/>
                             <constraint firstItem="Iki-Qc-2iZ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="klz-fC-04y"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yle-n7-DAZ" secondAttribute="trailing" constant="-4" id="lgy-uj-aId"/>
+                            <constraint id="9" constant="16" firstItem="kh9-bI-dsS" firstAttribute="trailing" secondItem="6mz-oh-9p1" secondAttribute="trailing"/>
+                            <constraint id="10" constant="20" firstItem="6mz-oh-9p1" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top"/>
+                            <constraint id="12" constant="16" firstItem="kh9-bI-dsS" firstAttribute="trailing" secondItem="yle-n7-DAZ" secondAttribute="trailing"/>
+                            <constraint id="13" constant="-68" firstItem="kh9-bI-dsS" firstAttribute="bottom" secondItem="yle-n7-DAZ" secondAttribute="bottom"/>
                         </constraints>
                     </view>
                     <connections>
@@ -108,4 +108,7 @@
             <point key="canvasLocation" x="197" y="313"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Default-568h.png" width="640" height="1136"/>
+    </resources>
 </document>
