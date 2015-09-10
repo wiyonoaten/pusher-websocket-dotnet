@@ -114,6 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Diagnostics\TraceEventType.cs" />
+    <Compile Include="System\Diagnostics\TraceSource.cs" />
     <Content Include="Properties\PusherClient.UWP.rd.xml" />
   </ItemGroup>
   <Import Project="..\PusherClient.Shared\PusherClient.Shared.projitems" Label="Shared" />

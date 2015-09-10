@@ -16,3 +16,4 @@ build
 msbuild.log
 *.userprefs
 Components/
+PusherClient.UWP/project.lock.json
