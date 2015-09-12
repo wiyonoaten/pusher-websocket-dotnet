@@ -17,7 +17,8 @@ Register at http://pusher.com.</description>
     <dependencies>
         <dependency id="Newtonsoft.Json" version="6.0.4" />
         <!--<dependency id="WebSocket4Net" version="0.10" />-->
-        <dependency id="WebSocket4Net" version="0.13.1" />
+        <!--<dependency id="WebSocket4Net" version="0.13.1" />-->
+        <dependency id="WebSocket4Net-LocalMod" version="0.13.1" />
     </dependencies>
   </metadata>
 </package>
