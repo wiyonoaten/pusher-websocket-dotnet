@@ -17,3 +17,5 @@ msbuild.log
 *.userprefs
 Components/
 PusherClient.UWP/project.lock.json
+ExampleApplication.UWP/AppPackages/
+ExampleApplication.UWP/project.lock.json

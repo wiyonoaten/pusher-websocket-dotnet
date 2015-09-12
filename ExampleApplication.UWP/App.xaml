@@ -1,0 +1,17 @@
+﻿<Application
+    x:Class="ExampleApplication.UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExampleApplication.UWP"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <x:String x:Key="StringButtonConnect">Connect :)</x:String>
+        <x:String x:Key="StringButtonDisconnect">Disconnect :(</x:String>
+        <x:String x:Key="StringHintEnterName">Enter your name and hit Start!</x:String>
+        <x:String x:Key="StringButtonSend">Send!</x:String>
+        <x:String x:Key="StringFormatHintEnterMessage">Hi {0}! Type anything to chat and hit Send!</x:String>
+        <x:String x:Key="StringAlertNotConnected">You are not (or no longer) connected!</x:String>
+        <x:String x:Key="StringToastDisconnected">Disconnected! Please start over again.</x:String>
+    </Application.Resources>
+
+</Application>

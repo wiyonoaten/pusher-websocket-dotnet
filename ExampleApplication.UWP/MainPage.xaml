@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="ExampleApplication.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExampleApplication.UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <RelativePanel HorizontalAlignment="Left" Height="620" Margin="10,10,0,0" VerticalAlignment="Top" Width="340">
+            <RelativePanel x:Name="LayoutConnectDisconnect" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Margin="5" >
+                <TextBox x:Name="EditName" TextWrapping="Wrap" VerticalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="ButtonStart" PlaceholderText="{StaticResource StringHintEnterName}" Margin="0,0,5,0"/>
+                <Button x:Name="ButtonStart" Content="{StaticResource StringButtonConnect}" HorizontalAlignment="Stretch" VerticalAlignment="Center" RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+            <StackPanel x:Name="LayoutChatView" RelativePanel.Below="LayoutConnectDisconnect" RelativePanel.Above="LayoutSendMessage" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="5">
+                <ScrollViewer x:Name="ScrollConsole" VerticalScrollMode="Enabled" HorizontalScrollMode="Disabled" Background="Black" Width="{Binding ActualWidth, ElementName=LayoutChatView, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=LayoutChatView, Mode=OneWay}">
+                    <TextBlock x:Name="TextConsole" TextWrapping="WrapWholeWords" Foreground="White" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Width="{Binding ActualWidth, ElementName=ScrollConsole, Mode=OneWay}"/>
+                </ScrollViewer>
+            </StackPanel>
+            <RelativePanel x:Name="LayoutSendMessage" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="5">
+                <TextBox x:Name="EditMessage" TextWrapping="Wrap" VerticalAlignment="Center" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="ButtonSend" PlaceholderText="{StaticResource StringFormatHintEnterMessage}" Margin="0,0,5,0"/>
+                <Button x:Name="ButtonSend" Content="{StaticResource StringButtonSend}" HorizontalAlignment="Stretch" VerticalAlignment="Center" RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+        </RelativePanel>
+
+    </Grid>
+</Page>
