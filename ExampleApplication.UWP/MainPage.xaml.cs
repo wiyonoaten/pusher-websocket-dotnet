@@ -12,6 +12,7 @@ using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Xaml.Automation.Peers;
 using Windows.UI.Xaml.Automation.Provider;
+using Windows.UI.ViewManagement;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -156,6 +157,8 @@ namespace ExampleApplication.UWP
 
         private void FireClickButton(Button button)
         {
+            InputPane.GetForCurrentView().TryHide();
+
             (new ButtonAutomationPeer(button)
                         .GetPattern(PatternInterface.Invoke) as IInvokeProvider)
                         .Invoke();
