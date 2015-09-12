@@ -20,7 +20,7 @@ namespace System.Diagnostics
         [Event(1)]
         public void TraceEvent(TraceEventType eventType, int id, string format, params object[] args)
         {
-            MethodBase method = typeof(TraceSource).GetMethod(CallerName());
+            MethodBase method = typeof(TraceSource).GetMethod(CallerName(), new[] { typeof(TraceEventType), typeof(int), typeof(string), typeof(object[]) });
             EventAttribute attr = (EventAttribute)method.GetCustomAttributes(typeof(EventAttribute)).FirstOrDefault();
 
             attr.Level = TraceEventType2EventLevel(eventType);

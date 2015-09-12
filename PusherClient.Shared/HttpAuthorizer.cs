@@ -32,6 +32,7 @@ namespace PusherClient
                     RequestUri = _authEndpoint,
                     Method = HttpMethod.Post,
                 };
+                request.Content = new StringContent(data);
                 request.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
                 authToken = httpClient.SendAsync(request).Result.Content.ReadAsStringAsync().Result;
             }
