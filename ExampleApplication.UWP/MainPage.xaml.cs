@@ -10,6 +10,8 @@ using System.Linq;
 using System.Net;
 using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
+using Windows.UI.Xaml.Automation.Peers;
+using Windows.UI.Xaml.Automation.Provider;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -41,6 +43,14 @@ namespace ExampleApplication.UWP
 
             this.EditMessage.PlaceholderText = "";
 
+            this.EditName.KeyUp += (sender, args) =>
+            {
+                if (args.Key == Windows.System.VirtualKey.Enter)
+                {
+                    FireClickButton(this.ButtonStart);
+                }
+            };
+
             this.ButtonStart.Click += (sender, args) =>
             {
                 if ((bool)this.ButtonStart.Tag == true)
@@ -64,6 +74,14 @@ namespace ExampleApplication.UWP
                     this.EditMessage.PlaceholderText = "";
 
                     UninitPusher();
+                }
+            };
+
+            this.EditMessage.KeyUp += (sender, args) =>
+            {
+                if (args.Key == Windows.System.VirtualKey.Enter)
+                {
+                    FireClickButton(this.ButtonSend);
                 }
             };
 
@@ -134,6 +152,13 @@ namespace ExampleApplication.UWP
             {
                 ExpirationTime = DateTimeOffset.Now.AddSeconds(isShort ? 5000 : 20000),
             });
+        }
+
+        private void FireClickButton(Button button)
+        {
+            (new ButtonAutomationPeer(button)
+                        .GetPattern(PatternInterface.Invoke) as IInvokeProvider)
+                        .Invoke();
         }
 
         #region Pusher Initiation / Connection
