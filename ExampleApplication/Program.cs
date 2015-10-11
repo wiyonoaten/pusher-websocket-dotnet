@@ -80,12 +80,12 @@ namespace ExampleApplication
             ListMembers();
         }
 
-        static void _presenceChannel_MemberRemoved(object sender)
+        static void _presenceChannel_MemberRemoved(object sender, string id)
         {
             ListMembers();
         }
 
-        static void _presenceChannel_MemberAdded(object sender)
+        static void _presenceChannel_MemberAdded(object sender, string id)
         {
             ListMembers();
         }

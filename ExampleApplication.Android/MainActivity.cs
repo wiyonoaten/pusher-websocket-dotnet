@@ -196,12 +196,12 @@ namespace ExampleApplication.Android
             ListMembers();
         }
 
-		private void _presenceChannel_MemberRemoved(object sender)
+		private void _presenceChannel_MemberRemoved(object sender, string id)
         {
             ListMembers();
         }
 
-		private void _presenceChannel_MemberAdded(object sender)
+		private void _presenceChannel_MemberAdded(object sender, string id)
         {
             ListMembers();
         }

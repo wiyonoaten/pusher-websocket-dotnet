@@ -51,7 +51,7 @@ namespace PusherClient
         public string SocketID {
             get
             {
-                return _connection.SocketID;
+                return _connection != null ? _connection.SocketID : null;
             }
         }
 
@@ -59,7 +59,7 @@ namespace PusherClient
         {
             get
             {
-                return _connection.State;
+                return _connection != null ? _connection.State : ConnectionState.Unavailable;
             }
         }
 

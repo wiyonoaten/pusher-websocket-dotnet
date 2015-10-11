@@ -12,7 +12,7 @@ namespace PusherClient
     using dynamic = JObject;
 #endif
 
-    public delegate void MemberEventHandler(object sender);
+    public delegate void MemberEventHandler(object sender, string id);
 
     public class PresenceChannel : PrivateChannel
     {
@@ -41,7 +41,7 @@ namespace PusherClient
                 Members[member.Key] = member.Value;
 
             if (MemberAdded != null)
-                MemberAdded(this);
+                MemberAdded(this, member.Key);
         }
 
         internal void RemoveMember(string data)
@@ -53,7 +53,7 @@ namespace PusherClient
                 Members.Remove(member.Key);
 
                 if (MemberRemoved != null)
-                    MemberRemoved(this);
+                    MemberRemoved(this, member.Key);
             }
         }
 
