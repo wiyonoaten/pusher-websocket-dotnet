@@ -15,10 +15,21 @@ Register at http://pusher.com.</description>
     <copyright>Copyright 2014</copyright>
     <tags>pusher realtime websocket</tags>
     <dependencies>
-        <dependency id="Newtonsoft.Json" version="6.0.4" />
-        <!--<dependency id="WebSocket4Net" version="0.10" />-->
-        <!--<dependency id="WebSocket4Net" version="0.13.1" />-->
-        <dependency id="WebSocket4Net-LocalMod" version="0.13.1" />
+        <group>
+            <dependency id="Newtonsoft.Json" version="6.0.4" />
+        </group>
+        <group targetFramework="net40">
+            <dependency id="WebSocket4Net" version="0.10" />
+        </group>
+        <group targetFramework="monoandroid22">
+            <dependency id="WebSocket4Net" version="0.10" />
+        </group>
+        <group targetFramework="Xamarin.iOS10">
+            <dependency id="WebSocket4Net" version="0.13.1" />
+        </group>
+        <group targetFramework="uap10.0">
+            <dependency id="WebSocket4Net-LocalMod" version="0.13.1" />
+        </group>
     </dependencies>
   </metadata>
 </package>

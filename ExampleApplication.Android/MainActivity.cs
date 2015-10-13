@@ -5,6 +5,7 @@ using Android.Widget;
 using PusherClient;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using Android.Text.Method;
 using System.Text;
@@ -136,6 +137,7 @@ namespace ExampleApplication.Android
             _pusher = new Pusher(PUSHER_APP_KEY, new PusherOptions()
             {
                 Authorizer = new HttpAuthorizer(PUSHER_AUTH_HOST + "/auth/" + HttpUtility.UrlEncode(_name))
+                //ProxyEndPoint = new IPEndPoint(IPAddress.Parse("192.168.1.87"), 8888),
             });
             _pusher.Connected += pusher_Connected;
             _pusher.ConnectionStateChanged += _pusher_ConnectionStateChanged;

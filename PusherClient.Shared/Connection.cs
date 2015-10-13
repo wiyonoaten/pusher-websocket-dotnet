@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using WebSocket4Net;
+using System.Net;
+using SuperSocket.ClientEngine;
 
 namespace PusherClient
 {
@@ -16,6 +18,7 @@ namespace PusherClient
         private string _socketId = null;
         private string _url = null;
         private Pusher _pusher = null;
+        private IProxyConnector _proxy;
         private ConnectionState _state = ConnectionState.Initialized;
         private bool _allowReconnect = true;
 
@@ -41,10 +44,11 @@ namespace PusherClient
 
         #endregion
 
-        public Connection(Pusher pusher, string url)
+        public Connection(Pusher pusher, string url, IProxyConnector proxy = null)
         {
             this._url = url;
             this._pusher = pusher;
+            this._proxy = proxy;
         }
 
         #region Internal Methods
@@ -58,6 +62,11 @@ namespace PusherClient
             _allowReconnect = true;
 
             _websocket = new WebSocket(_url);
+            if (_proxy != null)
+            {
+                // proxy trick reference: http://stackoverflow.com/a/23417094
+                _websocket.Proxy = _proxy;
+            }
             _websocket.EnableAutoSendPing = true;
             _websocket.AutoSendPingInterval = 1;
             _websocket.Opened += websocket_Opened;
@@ -143,8 +152,12 @@ namespace PusherClient
                         break;
 
                     case Constants.CHANNEL_SUBSCRIPTION_ERROR:
-
-                        throw new PusherException("Error received on channel subscriptions: " + e.Message, ErrorCodes.SubscriptionError);
+                        if (_pusher.Channels.ContainsKey(message.channel))
+                        {
+                            var channel = _pusher.Channels[message.channel];
+                            channel.SubscriptionFailed(ErrorCodes.SubscriptionError, e.Message);
+                        }
+                        break;
 
                     case Constants.CHANNEL_MEMBER_ADDED:
 

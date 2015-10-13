@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net;
+using PusherClient.WebSocketProxy;
 
 namespace PusherClient
 {
@@ -113,7 +114,8 @@ namespace PusherClient
                 scheme, this.Host, _applicationKey, Settings.Default.ProtocolVersion, Settings.Default.ClientName,
                 Settings.Default.VersionNumber);
 
-            _connection = new Connection(this, url);
+            _connection = new Connection(this, url, 
+                _options.ProxyEndPoint != null ? new HttpConnectProxy(_options.ProxyEndPoint) : null);
             _connection.Connected += _connection_Connected;
             _connection.ConnectionStateChanged +=_connection_ConnectionStateChanged;
             _connection.Connect();
@@ -149,18 +151,22 @@ namespace PusherClient
 
         private Channel SubscribeToChannel(ChannelTypes type, string channelName)
         {
+            Channel channel = null;
             switch (type)
             {
                 case ChannelTypes.Public:
-                    Channels.Add(channelName, new Channel(channelName, this));
+                    channel = new Channel(channelName, this);
+                    Channels.Add(channelName, channel);
                     break;
                 case ChannelTypes.Private:
                     AuthEndpointCheck();
-                    Channels.Add(channelName, new PrivateChannel(channelName, this));
+                    channel = new PrivateChannel(channelName, this);
+                    Channels.Add(channelName, channel);
                     break;
                 case ChannelTypes.Presence:
                     AuthEndpointCheck();
-                    Channels.Add(channelName, new PresenceChannel(channelName, this));
+                    channel = new PresenceChannel(channelName, this);
+                    Channels.Add(channelName, channel);
                     break;
             }
 
@@ -168,18 +174,32 @@ namespace PusherClient
             {
                 Task.Factory.StartNew(() => // TODO: if failed, communicate it out
                 {
-                    string jsonAuth = _options.Authorizer.Authorize(channelName, _connection.SocketID);
+                    try
+                    {
+                        string jsonAuth = _options.Authorizer.Authorize(channelName, _connection.SocketID);
 
-                    var template = new { auth = String.Empty, channel_data = String.Empty };
-                    var message = JsonConvert.DeserializeAnonymousType(jsonAuth, template);
+                        var template = new { auth = String.Empty, channel_data = String.Empty };
+                        var message = JsonConvert.DeserializeAnonymousType(jsonAuth, template);
 
-                    _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.CHANNEL_SUBSCRIBE, data = new { channel = channelName, auth = message.auth, channel_data = message.channel_data } }));
+                        _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.CHANNEL_SUBSCRIBE, data = new { channel = channelName, auth = message.auth, channel_data = message.channel_data } }));
+                    }
+                    catch(Exception ex)
+                    {
+                        channel.SubscriptionFailed(ErrorCodes.ConnectionFailed, ex.Message);
+                    }
                 });
             }
             else
             {
-                // No need for auth details. Just send subscribe event
-                _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.CHANNEL_SUBSCRIBE, data = new { channel = channelName } }));
+                try
+                {
+                    // No need for auth details. Just send subscribe event
+                    _connection.Send(JsonConvert.SerializeObject(new { @event = Constants.CHANNEL_SUBSCRIBE, data = new { channel = channelName } }));
+                }
+                catch (Exception ex)
+                {
+                    channel.SubscriptionFailed(ErrorCodes.ConnectionFailed, ex.Message);
+                }
             }
 
             return Channels[channelName];

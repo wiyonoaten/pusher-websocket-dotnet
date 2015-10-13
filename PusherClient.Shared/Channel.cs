@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace PusherClient
 {
     public delegate void SubscriptionEventHandler(object sender);
+    public delegate void FailedSubscriptionEventHandler(object sender, ErrorCodes errorCode, string errorMessage);
 
     public class Channel : EventEmitter
     {
@@ -14,6 +15,8 @@ namespace PusherClient
         private bool _isSubscribed = false;
 
         public event SubscriptionEventHandler Subscribed;
+        public event FailedSubscriptionEventHandler FailedToSubscribe;
+
         public string Name = null;
 
         public bool IsSubscribed
@@ -38,6 +41,12 @@ namespace PusherClient
                 Subscribed(this);
         }
 
+        internal void SubscriptionFailed(ErrorCodes errorCode, string errorMessage)
+        {
+            if (FailedToSubscribe != null)
+                FailedToSubscribe(this, errorCode, errorMessage);
+        }
+
         public void Unsubscribe()
         {
             _isSubscribed = false;
@@ -48,6 +57,5 @@ namespace PusherClient
         {
             _pusher.Trigger(this.Name, eventName, obj);
         }
-
     }
 }

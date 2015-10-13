@@ -27,5 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pusher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PusherException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebSocketProxy\HttpConnectProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebSocketProxy\ProxyConnectorBase.cs" />
   </ItemGroup>
 </Project>
