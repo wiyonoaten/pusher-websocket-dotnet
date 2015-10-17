@@ -30,6 +30,8 @@ namespace PusherClient
     // A delegate type for hooking up change notifications.
     public delegate void ConnectedEventHandler(object sender);
     public delegate void ConnectionStateChangedEventHandler(object sender, ConnectionState state);
+    public delegate void ConnectionFailedHandler(object sender, Exception ex);
+    public delegate void PusherErrorReceivedHandler(object sender, int code, string message);
 
     public class Pusher : EventEmitter
     {
@@ -45,6 +47,9 @@ namespace PusherClient
  
         public event ConnectedEventHandler Connected;
         public event ConnectionStateChangedEventHandler ConnectionStateChanged;
+        public event ConnectionFailedHandler ConnectionFailed;
+        public event PusherErrorReceivedHandler PusherErrorReceived;
+
         public Dictionary<string, Channel> Channels = new Dictionary<string, Channel>();
 
         #region Properties
@@ -118,6 +123,8 @@ namespace PusherClient
                 _options.ProxyEndPoint != null ? new HttpConnectProxy(_options.ProxyEndPoint) : null);
             _connection.Connected += _connection_Connected;
             _connection.ConnectionStateChanged +=_connection_ConnectionStateChanged;
+            _connection.ConnectionFailed += _connection_Failed;
+            _connection.PusherErrorReceived += _pusherError_Received;
             _connection.Connect();
             
         }
@@ -246,6 +253,18 @@ namespace PusherClient
         {
             if (this.Connected != null)
                 this.Connected(sender);
+        }
+
+        private void _connection_Failed(object sender, Exception ex)
+        {
+            if (this.ConnectionFailed != null)
+                this.ConnectionFailed(sender, ex);
+        }
+
+        private void _pusherError_Received(object sender, int code, string message)
+        {
+            if (this.PusherErrorReceived != null)
+                this.PusherErrorReceived(sender, code, message);
         }
 
         #endregion

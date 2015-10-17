@@ -24,6 +24,8 @@ namespace PusherClient
 
         public event ConnectedEventHandler Connected;
         public event ConnectionStateChangedEventHandler ConnectionStateChanged;
+        public event ConnectionFailedHandler ConnectionFailed;
+        public event PusherErrorReceivedHandler PusherErrorReceived;
 
         #region Properties
 
@@ -134,7 +136,9 @@ namespace PusherClient
                 switch (message.@event)
                 {
                     case Constants.ERROR:
-                        ParseError(message.data);
+                        {
+                            ParseError(message.data);
+                        }
                         break;
 
                     case Constants.CONNECTION_ESTABLISHED:
@@ -155,7 +159,7 @@ namespace PusherClient
                         if (_pusher.Channels.ContainsKey(message.channel))
                         {
                             var channel = _pusher.Channels[message.channel];
-                            channel.SubscriptionFailed(ErrorCodes.SubscriptionError, e.Message);
+                            channel.SubscriptionFailed(ErrorCodes.SubscriptionError, message.data);
                         }
                         break;
 
@@ -205,6 +209,19 @@ namespace PusherClient
             
         }
 
+        private Channel FindMatchingUnsubscribedChannelInErrorMessage(string errorData)
+        {
+            foreach (var channel in _pusher.Channels.Values)
+            {
+                if (channel.IsSubscribed == false
+                    && errorData.Contains(channel.Name))
+                {
+                    return channel;
+                }
+            }
+            return null;
+        }
+
         private void websocket_Opened(object sender, EventArgs e)
         {
             Pusher.Trace.TraceEvent(TraceEventType.Information, 0, "Websocket opened OK.");
@@ -225,6 +242,9 @@ namespace PusherClient
             Pusher.Trace.TraceEvent(TraceEventType.Error, 0, "Error: " + e.Exception);
 
             // TODO: What happens here? Do I need to re-connect, or do I just log the issue?
+
+            if (ConnectionFailed != null)
+                ConnectionFailed(this, e.Exception);
         }
 
         private void ParseConnectionEstablished(string data)
@@ -241,15 +261,26 @@ namespace PusherClient
 
         private void ParseError(string data)
         {
-            var template = new { message = String.Empty, code = 0 };
+            var template = new { message = String.Empty, code = (int?)0 };
             var parsed = JsonConvert.DeserializeAnonymousType(data, template);
 
             ErrorCodes error = ErrorCodes.Unkown;
 
-            if (Enum.IsDefined(typeof(ErrorCodes), parsed.code))
+            if (parsed.code != null && Enum.IsDefined(typeof(ErrorCodes), parsed.code))
                 error = (ErrorCodes)parsed.code;
 
-            throw new PusherException(parsed.message, error);
+            Pusher.Trace.TraceEvent(TraceEventType.Error, (int)error, "Pusher error: " + parsed.message);
+
+            var channel = FindMatchingUnsubscribedChannelInErrorMessage(parsed.message);
+            if (channel != null)
+            {
+                channel.SubscriptionFailed(ErrorCodes.SubscriptionError, parsed.message);
+            }
+            else
+            {
+                if (PusherErrorReceived != null)
+                    PusherErrorReceived(this, (int)error, parsed.message);
+            }
         }
 
         #endregion
