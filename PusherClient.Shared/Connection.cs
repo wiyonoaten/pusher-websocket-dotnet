@@ -159,7 +159,7 @@ namespace PusherClient
                         if (_pusher.Channels.ContainsKey(message.channel))
                         {
                             var channel = _pusher.Channels[message.channel];
-                            channel.SubscriptionFailed(message.data);
+                            channel.SubscriptionFailed(ErrorCodes.SubscriptionError, message.data);
                         }
                         break;
 
@@ -274,7 +274,7 @@ namespace PusherClient
             var channel = FindMatchingUnsubscribedChannelInErrorMessage(parsed.message);
             if (channel != null)
             {
-                channel.SubscriptionFailed(parsed.message);
+                channel.SubscriptionFailed(ErrorCodes.SubscriptionError, parsed.message);
             }
             else
             {

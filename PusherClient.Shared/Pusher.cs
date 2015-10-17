@@ -31,7 +31,7 @@ namespace PusherClient
     public delegate void ConnectedEventHandler(object sender);
     public delegate void ConnectionStateChangedEventHandler(object sender, ConnectionState state);
     public delegate void ConnectionFailedHandler(object sender, Exception ex);
-    public delegate void PusherErrorReceivedHandler(object sender, ErrorCodes errorCode, string message);
+    public delegate void PusherErrorReceivedHandler(object sender, ErrorCodes errorCode, string errorMessage);
 
     public class Pusher : EventEmitter
     {
@@ -261,10 +261,10 @@ namespace PusherClient
                 this.ConnectionFailed(sender, ex);
         }
 
-        private void _pusherError_Received(object sender, int code, string message)
+        private void _pusherError_Received(object sender, ErrorCodes errorCode, string errorMessage)
         {
             if (this.PusherErrorReceived != null)
-                this.PusherErrorReceived(sender, code, message);
+                this.PusherErrorReceived(sender, errorCode, errorMessage);
         }
 
         #endregion
