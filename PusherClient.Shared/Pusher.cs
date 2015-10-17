@@ -31,7 +31,7 @@ namespace PusherClient
     public delegate void ConnectedEventHandler(object sender);
     public delegate void ConnectionStateChangedEventHandler(object sender, ConnectionState state);
     public delegate void ConnectionFailedHandler(object sender, Exception ex);
-    public delegate void PusherErrorReceivedHandler(object sender, int code, string message);
+    public delegate void PusherErrorReceivedHandler(object sender, ErrorCodes errorCode, string message);
 
     public class Pusher : EventEmitter
     {
