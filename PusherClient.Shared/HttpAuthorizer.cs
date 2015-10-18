@@ -27,7 +27,7 @@ namespace PusherClient
         /// <param name="channelName"></param>
         /// <param name="socketId"></param>
         /// <returns></returns>
-        public string Authorize(string channelName, string socketId)
+        public virtual string Authorize(string channelName, string socketId)
         {
             string authToken = null;
 
